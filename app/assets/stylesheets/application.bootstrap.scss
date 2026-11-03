@@ -1,2 +1,17 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.btn-light {
+  background: transparent;
+  border-color: transparent;
+}
+
+.vr-short {
+  height: 1.5rem;
+  align-self: center;
+}
+
+.logo-lower {
+  position: relative;
+  top: 1px;
+}
