@@ -2,20 +2,31 @@
   <header class="container d-flex flex-column flex-md-row align-items-center
     justify-content-center justify-content-md-between
     py-3 gap-3">
+
     <div class="d-flex align-items-center gap-1">
-      <i class="bi bi-box-seam fs-4 logo-lower"></i>
-      <span class="fs-4 fw-semibold mx-1">Inventories</span>
+      <%= link_to root_path, class: "text-body text-decoration-none",
+                             aria: { label: "Inventories home" } do %>
+        <i class="bi bi-box-seam fs-4 logo-lower"></i>
+        <span class="fs-4 fw-semibold mx-1">Inventories</span>
+      <% end %>
     </div>
+
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-link text-body btn-light p-1">
         <i class="bi bi-translate fs-6"></i>
       </button>
+
       <button type="button" class="btn btn-link text-body btn-light p-1">
         <i class="bi bi-moon fs-6"></i>
       </button>
+
       <div class="vr vr-short mx-2"></div>
-      <button type="button" class="btn btn-light fw-semibold">Sign in</button>
-      <button type="button" class="btn btn-dark fw-semibold">Sign up</button>
+      <% if authenticated? %>
+        <%= button_to "Sign out", session_path, method: :delete, class: "btn btn-dark fw-semibold" %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path, class: "btn btn-light fw-semibold" %>
+        <%= link_to "Sign up", new_registration_path, class: "btn btn-dark fw-semibold" %>
+      <% end %>
     </div>
   </header>
 </div>
