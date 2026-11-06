@@ -8,14 +8,17 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= yield :head %>
+
     <link rel="icon" href="/box-seam.svg" type="image/svg+xml">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
+
   <body>
     <% hide = %w[sessions passwords registrations].include?(controller_name) %>
-    <%= render "layouts/header" unless hide %>
+    <%= render "shared/header" unless hide %>
     <%= yield %>
   </body>
 </html>

@@ -2,51 +2,53 @@
   <div class="auth-box w-100 px-3">
     <div class="text-center mb-4 py-1">
       <%= link_to root_path, class: "text-body text-decoration-none",
-                             aria: { label: "Inventories home" } do %>
+                             aria: { label: t(".icon_label") } do %>
         <i class="bi bi-box-seam fs-1"></i>
       <% end %>
-      <h1 class="h5 fw-semibold mt-3">Sign in to Inventories</h1>
+      <h1 class="h5 fw-semibold mt-3"><%= t(".title") %></h1>
     </div>
 
     <% if alert %><div class="text-center alert alert-danger py-2"><%= alert %></div><% end %>
-    <% if notice %><div class="text-center alert alert-info py-2"><%= notice %></div><% end %>
 
     <%= form_with url: session_path do |form| %>
       <div class="mb-3">
-        <%= form.label :email, "Email address", class: "form-label fw-semibold" %>
+        <%= form.label :email, t(".email_address"), class: "form-label fw-semibold" %>
         <%= form.email_field :email_address, value: params[:email_address], class: "form-control",
                            required: true, autofocus: true, autocomplete: "email" %>
       </div>
       <div class="mb-3">
         <div class="d-flex justify-content-between">
-          <%= form.label :password, "Password", class: "form-label fw-semibold" %>
-          <%= link_to "Forgot password?", new_password_path, class: "small text-decoration-none" %>
+          <%= form.label :password, t(".password"), class: "form-label fw-semibold" %>
+          <%= link_to t(".forgot_password"), new_password_path, class: "small text-decoration-none" %>
         </div>
         <%= form.password_field :password, class: "form-control",
                               required: true, autocomplete: "current-password", maxlength: 72 %>
       </div>
-      <%= form.submit "Sign in", class: "btn btn-success w-100 fw-semibold" %>
+      <%= form.submit t(".sign_in"), class: "btn btn-success w-100 fw-semibold" %>
     <% end %>
     <div class="d-flex align-items-center text-secondary my-3">
       <hr class="flex-grow-1 m-0">
-      <span class="px-3 small">or</span>
+      <span class="px-3 small"><%= t(".or") %></span>
       <hr class="flex-grow-1 m-0">
     </div>
 
     <div class="d-grid gap-2">
     <%= button_to "/auth/google_oauth2", method: :post, data: { turbo: false },
                                          class: "btn btn-secondary border w-100 fw-semibold" do %>
-      <i class="bi bi-google me-2"></i>Continue with Google
+      <i class="bi bi-google me-2"></i><%= t(".google") %>
     <% end %>
     <%= button_to "/auth/github", method: :post, data: { turbo: false },
                                   class: "btn btn-secondary border w-100 fw-semibold" do %>
-      <i class="bi bi-github me-2"></i>Continue with GitHub
+      <i class="bi bi-github me-2"></i><%= t(".github") %>
     <% end %>
     </div>
 
     <p class="text-center mt-4 mb-0">
-      New to Inventories?
-      <%= link_to "Create an account", new_registration_path, class: "text-decoration-none" %>
+      <%= t(".bottom_text") %>
+      <%= link_to t(".create_account"), new_registration_path, class: "text-decoration-none" %>
     </p>
   </div>
+</div>
+<div class="position-absolute top-0 end-0 py-2 px-3">
+  <%= render "shared/preferences" %>
 </div>

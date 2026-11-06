@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(get_user_params)
     if @user.save
-      redirect_to new_session_path, notice: "Registration was successful."
+      redirect_to new_session_path, notice: t(".success")
     else
       render :new, status: :unprocessable_entity
     end

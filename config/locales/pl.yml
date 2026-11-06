@@ -1,0 +1,59 @@
+pl:
+  locales:
+    pl: "Polski - PL"
+    en: "English - EN"
+  shared:
+    header:
+      sign_in: "Zaloguj się"
+      sign_up: "Zarejestruj się"
+      sign_out: "Wyloguj się"
+    preferences:
+      change_language: "Zmień język"
+  sessions:
+    new:
+      icon_label: "Inventories stron główna"
+      title: "Zaloguj się do Inventories"
+      email_address: "Adres email"
+      password: "Hasło"
+      forgot_password: "Zapomniałeś hasła?"
+      sign_in: "Zaloguj się"
+      or: "lub"
+      google: "Kontynuuj z Google"
+      github: "Kontynuuj z GitHub"
+      bottom_text: "Nowy na Inventories?"
+      create_account: "Załóż konto"
+    create:
+      invalid_credentials: "Nieprawidłowy adres e-mail lub hasło."
+      rate_limited: "Zbyt wiele prób. Spróbuj ponownie później."
+  passwords:
+    new:
+      icon_label: "Inventories stron główna"
+      title: "Zresetuj swoje hasło"
+      desc: "Podaj zweryfikowany adres email swojego konta, a my wyślemy Ci link do zresetowania hasła."
+      email_address: "Adres email"
+      send: "Wyślij"
+    create:
+      success: "Instrukcja zresetowania hasła została wysłana."
+      rate_limited: "Zbyt wiele prób. Spróbuj ponownie później."
+  registrations:
+    new:
+      title: "Załóż konto w Inventories"
+      google: "Kontynuuj z Google"
+      github: "Kontynuuj z GitHub"
+      or: "lub"
+      name: "Nazwa użytkownika"
+      email_address: "Adres email"
+      password: "Hasło"
+      password_text: "Co najmniej 8 znaków."
+      create_account: "Utwórz konto"
+      bottom_text: "Masz już konto?"
+      sign_in: "Zaloguj się"
+    create:
+      success: "Rejestracja przebiegła pomyślnie."
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email_address:
+              already_in_use: "Konto z tym adresem email już istniej."

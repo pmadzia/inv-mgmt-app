@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center gap-2">
+  <div class="dropdown">
+    <button type="button"
+            class="btn text-body btn-light px-2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            aria-label="<%= t(".change_language") %>">
+      <i class="bi bi-translate fs-6"></i>
+      <span class="fw-semibold"><%= I18n.locale.to_s.upcase %></span>
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end">
+      <% I18n.available_locales.each do |locale| %>
+        <li>
+          <%= link_to t(locale, scope: "locales"),
+                      url_for(locale: locale),
+                      class: "dropdown-item #{'active' if I18n.locale == locale}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <button type="button" class="btn btn-link text-body btn-light px-2">
+    <i class="bi bi-moon fs-6"></i>
+  </button>
+</div>

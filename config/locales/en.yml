@@ -1,31 +1,59 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  locales:
+    en: "English - EN"
+    pl: "Polski - PL"
+  shared:
+    header:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"
+    preferences:
+      change_language: "Change language"
+  sessions:
+    new:
+      icon_label: "Inventories home"
+      title: "Sign in to Inventories"
+      email_address: "Email address"
+      password: "Password"
+      forgot_password: "Forgot password?"
+      sign_in: "Sign in"
+      or: "or"
+      google: "Continue with Google"
+      github: "Continue with GitHub"
+      bottom_text: "New to Inventories?"
+      create_account: "Create an account"
+    create:
+      invalid_credentials: "Try another email address or password."
+      rate_limited: "Too many attempts. Try again later."
+  passwords:
+    new:
+      icon_label: "Inventories home"
+      title: "Reset your password"
+      desc: "Enter your user account's verified email address and we will send you a password reset link."
+      email_address: "Email address"
+      send: "Send"
+    create:
+      success: "Password reset instructions sent."
+      rate_limited: "Too many attempts. Try again later."
+  registrations:
+    new:
+      title: "Sign up to Inventories"
+      google: "Continue with Google"
+      github: "Continue with GitHub"
+      or: "or"
+      name: "Username"
+      email_address: "Email address"
+      password: "Password"
+      password_text: "At least 8 characters."
+      create_account: "Create account"
+      bottom_text: "Already registered?"
+      sign_in: "Sign in"
+    create:
+      success: "Registration was successful."
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email_address:
+              already_in_use: "Email already in use."

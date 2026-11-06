@@ -2,23 +2,23 @@
   <div class="auth-box w-100 px-3">
     <div class="text-center mb-4 py-1">
           <br><br>
-      <h1 class="h4 fw-semibold mt-4">Sign up to Inventories</h1>
+      <h1 class="h4 fw-semibold mt-4"><%= t(".title") %></h1>
     </div>
 
     <div class="d-grid gap-2">
     <%= button_to "/auth/google_oauth2", method: :post, data: { turbo: false },
                                          class: "btn btn-secondary border w-100 fw-semibold" do %>
-      <i class="bi bi-google me-2"></i>Continue with Google
+      <i class="bi bi-google me-2"></i><%= t(".google") %>
     <% end %>
     <%= button_to "/auth/github", method: :post, data: { turbo: false },
                                   class: "btn btn-secondary border w-100 fw-semibold" do %>
-      <i class="bi bi-github me-2"></i>Continue with GitHub
+      <i class="bi bi-github me-2"></i><%= t(".github") %>
     <% end %>
     </div>
 
     <div class="d-flex align-items-center text-secondary my-3">
       <hr class="flex-grow-1 m-0">
-      <span class="px-3 small">or</span>
+      <span class="px-3 small"><%= t(".or") %></span>
       <hr class="flex-grow-1 m-0">
     </div>
 
@@ -26,13 +26,13 @@
 
     <%= form_with model: @user, url: registration_path do |form| %>
       <div class="mb-3">
-        <%= form.label :name, "Name", class: "form-label fw-semibold" %>
+        <%= form.label :name, t(".name"), class: "form-label fw-semibold" %>
         <%= form.text_field :name, value: params[:name], class: "form-control",
                            required: true, autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :email, "Email address", class: "form-label fw-semibold
+        <%= form.label :email, t(".email_address"), class: "form-label fw-semibold
                                                         #{'is-invalid' if @user.errors[:email_address].any?}" %>
         <%= form.email_field :email_address, value: params[:email_address], class: "form-control",
                            required: true, autofocus: true, autocomplete: "email" %>
@@ -42,17 +42,20 @@
         <% end %>
       </div>
       <div class="mb-3">
-        <%= form.label :password, "Password", class: "form-label fw-semibold" %>
+        <%= form.label :password, t(".password"), class: "form-label fw-semibold" %>
         <%= form.password_field :password, class: "form-control",
                               required: true, autocomplete: "current-password", minlength: 8, maxlength: 72 %>
-        <div class="form-text">At least 8 characters.</div>
+        <div class="form-text"><%= t(".password_text") %></div>
       </div>
-      <%= form.submit "Sign in", class: "btn btn-success w-100 fw-semibold" %>
+      <%= form.submit t(".create_account"), class: "btn btn-success w-100 fw-semibold" %>
     <% end %>
 
     <p class="text-center mt-4 mb-0">
-      Already registered?
-      <%= link_to "Sign in", new_session_path, class: "text-decoration-none" %>
+      <%= t(".bottom_text") %>
+      <%= link_to t(".sign_in"), new_session_path, class: "text-decoration-none" %>
     </p>
   </div>
+</div>
+<div class="position-absolute top-0 end-0 py-2 px-3">
+  <%= render "shared/preferences" %>
 </div>
