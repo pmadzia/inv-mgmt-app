@@ -20,7 +20,12 @@
     </ul>
   </div>
 
-  <button type="button" class="btn btn-link text-body btn-light px-2">
-    <i class="bi bi-moon fs-6"></i>
-  </button>
+  <% other_theme = get_current_theme == "dark" ? "light" : "dark" %>
+  <%= button_to request.path,
+                method: :get,
+                params: request.query_parameters.merge(theme: other_theme),
+                class: "btn text-body btn-light px-2",
+                form: { class: "d-inline" } do %>
+    <i class="bi <%= other_theme == "light" ? "bi-sun" : "bi-moon" %> fs-6"></i>
+  <% end %>
 </div>
