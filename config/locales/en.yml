@@ -25,6 +25,8 @@ en:
     create:
       invalid_credentials: "Try another email address or password."
       rate_limited: "Too many attempts. Try again later."
+    omniauth:
+      email_already_used: "Account with this email was already created."
   passwords:
     new:
       icon_label: "Inventories home"

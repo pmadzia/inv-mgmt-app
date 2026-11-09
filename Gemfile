@@ -1,5 +1,11 @@
 source "https://rubygems.org"
 
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-github"
+gem "omniauth-rails_csrf_protection"
+
+gem "dotenv-rails", ">= 2.1.1"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.4"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]

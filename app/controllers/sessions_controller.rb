@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create ]
+  allow_unauthenticated_access only: %i[ new create omniauth ]
   rate_limit to: 10, within: 3.minutes, only: :create,
              with: -> { redirect_to new_session_path, alert: t("sessions.create.rate_limited") }
 
@@ -18,5 +18,15 @@ class SessionsController < ApplicationController
   def destroy
     terminate_session
     redirect_to root_path, status: :see_other
+  end
+
+  def omniauth
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    if user.persisted?
+      start_new_session_for user
+      redirect_to after_authentication_url
+    else
+      redirect_to new_session_path, alert: t(".email_already_used")
+    end
   end
 end

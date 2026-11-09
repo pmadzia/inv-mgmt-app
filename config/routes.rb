@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "password_reset", to: "passwords#new", as: :new_password
   resource :registration, only: %i[create]
   get "registration", to: "registrations#new", as: :new_registration
+  get "/auth/:provider/callback", to: "sessions#omniauth"
   root "main#index"
   get "up" => "rails/health#show", as: :rails_health_check
 end
