@@ -25,8 +25,12 @@ pl:
     create:
       invalid_credentials: "Nieprawidłowy adres e-mail lub hasło."
       rate_limited: "Zbyt wiele prób. Spróbuj ponownie później."
+      success: &signed_in "Zalogowano się pomyślnie."
+    destroy:
+      signed_out: "Wylogowano się pomyślnie."
     omniauth:
       email_already_used: "Konto z tym adresem email zostało już utworzone."
+      success: *signed_in
   passwords:
     new:
       icon_label: "Inventories stron główna"

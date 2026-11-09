@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      redirect_to after_authentication_url
+      redirect_to after_authentication_url, notice: t(".success")
     else
       redirect_to new_session_path, alert: t(".invalid_credentials")
     end
@@ -17,14 +17,14 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, notice: t(".signed_out")
   end
 
   def omniauth
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
       start_new_session_for user
-      redirect_to after_authentication_url
+      redirect_to after_authentication_url, notice: t(".success")
     else
       redirect_to new_session_path, alert: t(".email_already_used")
     end

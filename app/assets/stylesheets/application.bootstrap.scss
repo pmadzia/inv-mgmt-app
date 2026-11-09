@@ -16,7 +16,7 @@
   top: 1px;
 }
 
-.auth-box {
+.auth-box, .flash-box {
   max-width: 380px;
 }
 
@@ -43,4 +43,13 @@
   --bs-btn-active-color: #000;
   --bs-btn-active-bg: #c6c7c8;
   --bs-btn-active-border-color: #babbbc;
+}
+
+.btn-close-size {
+  font-size: 0.7rem;
+}
+
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
 }

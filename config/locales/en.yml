@@ -25,8 +25,12 @@ en:
     create:
       invalid_credentials: "Try another email address or password."
       rate_limited: "Too many attempts. Try again later."
+      success: &signed_in "Signed in successfully."
+    destroy:
+      signed_out: "Signed out successfully."
     omniauth:
       email_already_used: "Account with this email was already created."
+      success: *signed_in
   passwords:
     new:
       icon_label: "Inventories home"
@@ -35,7 +39,7 @@ en:
       email_address: "Email address"
       send: "Send"
     create:
-      success: "Password reset instructions sent."
+      success: "Password reset instructions were sent."
       rate_limited: "Too many attempts. Try again later."
   registrations:
     new:

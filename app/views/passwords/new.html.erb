@@ -10,8 +10,7 @@
       <p><%= t(".desc") %></p>
     </div>
 
-    <% if alert %><div class="text-center alert alert-danger py-2"><%= alert %></div><% end %>
-    <% if alert %><div class="text-center alert alert-info py-2"><%= notice %></div><% end %>
+    <%= render "shared/flash" %>
 
     <%= form_with url: passwords_path do |form| %>
       <div class="mb-3">
