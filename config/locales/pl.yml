@@ -63,3 +63,12 @@ pl:
           attributes:
             email_address:
               already_in_use: "Konto z tym adresem email już istniej."
+  validation:
+    email:
+      empty: "Wpisz swój adres email."
+      invalid: "Wpisz poprawny adres email."
+    password:
+      empty: "Wpisz hasło."
+      short: "Hasło jest za krótkie."
+    name:
+      empty: "Wpisz swoją nazwę użytkownika."

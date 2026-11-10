@@ -63,3 +63,12 @@ en:
           attributes:
             email_address:
               already_in_use: "Email already in use."
+  validation:
+    email:
+      empty: "Please enter your email address."
+      invalid: "Please enter a valid email address."
+    password:
+      empty: "Please enter your password."
+      short: "Password is too short."
+    name:
+      empty: "Please enter your username."

@@ -15,8 +15,9 @@
     <%= form_with url: passwords_path do |form| %>
       <div class="mb-3">
         <%= form.label :email, t(".email_address"), class: "form-label fw-semibold" %>
-        <%= form.email_field :email_address, value: params[:email_address], class: "form-control",
-                           required: true, autofocus: true, autocomplete: "email" %>
+        <%= form.email_field :email_address, title: "", value: params[:email_address], class: "form-control",
+                           required: true, autofocus: true, autocomplete: "email",
+                           **email_validation %>
       </div>
         <%= form.submit t(".send"), class: "btn btn-success w-100 fw-semibold" %>
     <% end %>

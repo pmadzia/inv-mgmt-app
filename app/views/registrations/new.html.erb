@@ -27,15 +27,17 @@
     <%= form_with model: @user, url: registration_path do |form| %>
       <div class="mb-3">
         <%= form.label :name, t(".name"), class: "form-label fw-semibold" %>
-        <%= form.text_field :name, value: params[:name], class: "form-control",
-                           required: true, autofocus: true, autocomplete: "name" %>
+        <%= form.text_field :name, title: "", value: params[:name], class: "form-control",
+                           required: true, autofocus: true, autocomplete: "name",
+                           **name_validation %>
       </div>
 
       <div class="mb-3">
         <%= form.label :email, t(".email_address"), class: "form-label fw-semibold
                                                         #{'is-invalid' if @user.errors[:email_address].any?}" %>
-        <%= form.email_field :email_address, value: params[:email_address], class: "form-control",
-                           required: true, autofocus: true, autocomplete: "email" %>
+        <%= form.email_field :email_address, title: "", value: params[:email_address], class: "form-control",
+                           required: true, autofocus: true, autocomplete: "email",
+                           **email_validation %>
 
         <% if (message = @user.errors[:email_address].first) %>
           <div class="invalid-feedback"><%= message %></div>
@@ -43,8 +45,10 @@
       </div>
       <div class="mb-3">
         <%= form.label :password, t(".password"), class: "form-label fw-semibold" %>
-        <%= form.password_field :password, class: "form-control",
-                              required: true, autocomplete: "current-password", minlength: 8, maxlength: 72 %>
+        <%= form.password_field :password, title: "", class: "form-control",
+                              required: true, autocomplete: "current-password",
+                              minlength: 8, maxlength: 72,
+                              **password_validation %>
         <div class="form-text"><%= t(".password_text") %></div>
       </div>
       <%= form.submit t(".create_account"), class: "btn btn-success w-100 fw-semibold" %>
