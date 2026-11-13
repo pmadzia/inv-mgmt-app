@@ -3,6 +3,7 @@ module Authentication
 
   included do
     before_action :require_authentication
+    before_action :require_active_user
     helper_method :authenticated?, :current_user
   end
 
@@ -13,6 +14,13 @@ module Authentication
   end
 
   private
+
+    def require_active_user
+      return unless Current.user&.blocked?
+      terminate_session
+      redirect_to new_session_path, alert: t("authentication.account_blocked")
+    end
+
     def authenticated?
       resume_session
     end

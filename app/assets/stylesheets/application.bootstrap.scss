@@ -20,6 +20,10 @@
   max-width: 380px;
 }
 
+.admin-box {
+  max-width: 1320px;
+}
+
 [data-bs-theme="dark"] .btn-light {
   --bs-btn-color: #fff;
   --bs-btn-bg: #212529;
@@ -52,4 +56,9 @@
 .btn-close:focus {
   box-shadow: none;
   outline: none;
+}
+
+a.sort_link {
+  color: inherit;
+  text-decoration: none;
 }

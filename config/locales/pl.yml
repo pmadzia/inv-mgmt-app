@@ -1,4 +1,7 @@
 pl:
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"
   locales:
     pl: "Polski - PL"
     en: "English - EN"
@@ -26,11 +29,13 @@ pl:
       invalid_credentials: "Nieprawidłowy adres e-mail lub hasło."
       rate_limited: "Zbyt wiele prób. Spróbuj ponownie później."
       success: &signed_in "Zalogowano się pomyślnie."
+      account_blocked: &account_blocked "Twoje konto zostało zablokowane."
     destroy:
       signed_out: "Wylogowano się pomyślnie."
     omniauth:
       email_already_used: "Konto z tym adresem email zostało już utworzone."
       success: *signed_in
+      account_blocked: *account_blocked
   passwords:
     new:
       icon_label: "Inventories stron główna"
@@ -56,7 +61,53 @@ pl:
       sign_in: "Zaloguj się"
     create:
       success: "Rejestracja przebiegła pomyślnie."
+  admin:
+    index:
+      users: "Użytkownicy"
+      block: "Zablokuj"
+      unblock: "Odblokuj"
+      add_admin: "Nadaj uprawnienia admina"
+      remove_admin: "Odbierz uprawnienia admina"
+      delete: "Usuń"
+    users:
+      columns:
+        admin: "Admin"
+        blocked: "Zablokowany"
+      message:
+        block:
+          one: "Zablokowano %{count} użytkownika."
+          few: &block "Zablokowano %{count} użytkowników."
+          many: *block
+          other: *block
+        unblock:
+          one: "Odblokowano %{count} użytkownika."
+          few: &unblock "Odblokowano %{count} użytkowników."
+          many: *unblock
+          other: *unblock
+        promote:
+          one: "Nadano uprawnienia admina %{count} użytkownikowi."
+          few: &promote "Nadano uprawnienia admina %{count} użytkownikom."
+          many: *promote
+          other: *promote
+        demote:
+          one: "Odebrano uprawnienia admina %{count} użytkownikowi."
+          few: &demote "Odebrano uprawnienia admina %{count} użytkownikom."
+          many: *demote
+          other: *demote
+        delete:
+          one: "Usunięto %{count} użytkownika."
+          few: &delete "Usunięto %{count} użytkowników."
+          many: *delete
+          other: *delete
+    not_auth: "Brak autoryzacji"
+  authentication:
+    account_blocked: *account_blocked
   activerecord:
+    attributes:
+      user:
+        name: "Nazwa"
+        email_address: "Adres email"
+        created_at: "Dołączył"
     errors:
       models:
         user:

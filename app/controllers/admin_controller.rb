@@ -8,29 +8,29 @@ class AdminController < ApplicationController
   end
 
   def block_selected
-    apply_to_selected("blocked") { @selected.update_all(status: User.statuses[:blocked]) }
+    apply_to_selected("block") { @selected.update_all(status: User.statuses[:blocked]) }
   end
 
   def unblock_selected
-    apply_to_selected("unblocked") { @selected.update_all(status: User.statuses[:active]) }
+    apply_to_selected("unblock") { @selected.update_all(status: User.statuses[:active]) }
   end
 
   def promote_selected
-    apply_to_selected("promoted") { @selected.update_all(role: User.roles[:admin]) }
+    apply_to_selected("promote") { @selected.update_all(role: User.roles[:admin]) }
   end
 
   def demote_selected
-    apply_to_selected("demoted") { @selected.update_all(role: User.roles[:user]) }
+    apply_to_selected("demote") { @selected.update_all(role: User.roles[:user]) }
   end
 
   def delete_selected
-    def delete_selected = apply_to_selected("deleted") { @selected.delete_all }
+    apply_to_selected("delete") { @selected.destroy_all.count }
   end
 
   private
 
   def require_admin
-    redirect_to root_path, alert: "Not authorized.", status: :see_other unless
+    redirect_to root_path, alert: t("admin.not_auth"), status: :see_other unless
     current_user&.admin? && current_user.active?
   end
 
@@ -42,7 +42,7 @@ class AdminController < ApplicationController
 
   def apply_to_selected(action)
     count = yield
-    respond_with_list "#{helpers.pluralize(count, 'user')} #{action}."
+    respond_with_list t("admin.users.message.#{action}", count: count)
   end
 
   def load_selected_users

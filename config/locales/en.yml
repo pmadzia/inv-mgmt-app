@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      short: "%d %b %Y %H:%M"
   locales:
     en: "English - EN"
     pl: "Polski - PL"
@@ -26,11 +29,13 @@ en:
       invalid_credentials: "Try another email address or password."
       rate_limited: "Too many attempts. Try again later."
       success: &signed_in "Signed in successfully."
+      account_blocked: &account_blocked "Your account has been blocked."
     destroy:
       signed_out: "Signed out successfully."
     omniauth:
       email_already_used: "Account with this email was already created."
       success: *signed_in
+      account_blocked: *account_blocked
   passwords:
     new:
       icon_label: "Inventories home"
@@ -56,7 +61,44 @@ en:
       sign_in: "Sign in"
     create:
       success: "Registration was successful."
+  admin:
+    index:
+      users: "Users"
+      block: "Block"
+      unblock: "Unblock"
+      add_admin: "Add admin"
+      remove_admin: "Remove admin"
+      delete: "Delete"
+    users:
+      columns:
+        admin: "Admin"
+        blocked: "Blocked"
+      message:
+        block:
+          one: "Blocked %{count} user."
+          other: "Blocked %{count} users."
+        unblock:
+          one: "Unblocked %{count} user."
+          other: "Unblocked %{count} users."
+        promote:
+          one: "Promoted to admin %{count} user."
+          other: "Promoted to admin %{count} users."
+        demote:
+          one: "Demoted %{count} user."
+          other: "Demoted %{count} users."
+        delete:
+          one: "Deleted %{count} user."
+          other: "Deleted %{count} users."
+    require_admin:
+      not_auth: "Not authorized."
+  authentication:
+    account_blocked: *account_blocked
   activerecord:
+    attributes:
+      user:
+        name: "Name"
+        email_address: "Email"
+        created_at: "Joined"
     errors:
       models:
         user:

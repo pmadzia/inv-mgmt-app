@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate_by(params.permit(:email_address, :password))
+    user = User.authenticate_by(params.permit(:email_address, :password))
+
+    if user&.blocked?
+      redirect_to new_session_path, alert: t(".account_blocked")
+    elsif user&.authenticate(params[:password])
       start_new_session_for user
       redirect_to after_authentication_url, notice: t(".success")
     else
@@ -23,8 +27,12 @@ class SessionsController < ApplicationController
   def omniauth
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
-      start_new_session_for user
-      redirect_to after_authentication_url, notice: t(".success")
+      if user&.blocked?
+        redirect_to new_session_path, alert: t(".account_blocked")
+      else
+        start_new_session_for user
+        redirect_to after_authentication_url, notice: t(".success")
+      end
     else
       redirect_to new_session_path, alert: t(".email_already_used")
     end
