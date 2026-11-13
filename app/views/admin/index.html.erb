@@ -1,0 +1,15 @@
+<div data-controller="bulk-select">
+  <%= render "shared/flash" %>
+  <%= form_with url: unblock_selected_admin_path, method: :post, id: "bulk-form" do %>
+    <div class="d-flex gap-2 mb-3">
+      <button type="submit" formaction="<%= block_selected_admin_path %>" class="btn btn-outline-secondary" data-bulk-select-target="action" disabled>Block</button>
+      <button type="submit" formaction="<%= unblock_selected_admin_path %>" class="btn btn-outline-secondary" data-bulk-select-target="action" disabled>Unblock</button>
+      <button type="submit" formaction="<%= promote_selected_admin_path %>" class="btn btn-outline-secondary" data-bulk-select-target="action" disabled>Make admin</button>
+      <button type="submit" formaction="<%= demote_selected_admin_path %>" class="btn btn-outline-secondary" data-bulk-select-target="action" disabled>Remove admin</button>
+      <button type="submit" formaction="<%= delete_selected_admin_path %>" class="btn btn-outline-danger"
+              data-bulk-select-target="action" data-turbo-confirm="Delete the selected users?" disabled>Delete</button>
+    </div>
+  <% end %>
+
+  <%= render "admin/users_list", q: @q, users: @users %>
+</div>

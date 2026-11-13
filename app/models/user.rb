@@ -4,8 +4,8 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-  enum :blocked, { active: 0, blocked: 1 }, prefix: true
-  enum :admin, { active: 0, admin: 1 }, prefix: true
+  enum :status, { active: 0, blocked: 1 }
+  enum :role, { user: 0, admin: 1 }
 
   validates :name, presence: true
   validates :email_address, presence: true,
@@ -19,5 +19,13 @@ class User < ApplicationRecord
       user.email_address = response.dig(:info, :email)
       user.password = SecureRandom.hex(16)
     end
+  end
+
+  def self.ransackable_attributes(_auth = nil)
+    %w[name email_address status role created_at]
+  end
+
+  def self.ransackable_associations(_auth = nil)
+    []
   end
 end
