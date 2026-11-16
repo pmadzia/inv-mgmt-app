@@ -7,3 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+%w[
+  Laptops
+  Smartphones
+  Tablets
+  Monitors
+  Keyboards & Mice
+  Headphones & Audio
+  Cameras
+  Printers
+  Networking
+  Storage
+  Components
+  Accessories
+  Other
+].each do |name|
+  Category.find_or_create_by!(name: name)
+end

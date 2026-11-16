@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :inventories, foreign_key: :creator_id, inverse_of: :creator, dependent: :destroy
+  has_many :items, foreign_key: :created_by_id, inverse_of: :created_by, dependent: :restrict_with_error
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
