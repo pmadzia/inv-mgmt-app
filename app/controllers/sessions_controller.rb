@@ -25,24 +25,16 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    auth = request.env["omniauth.auth"]
-    user = User.from_omniauth(auth)
-
+    user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
-      if user.blocked?
+      if user&.blocked?
         redirect_to new_session_path, alert: t(".account_blocked")
       else
         start_new_session_for user
         redirect_to after_authentication_url, notice: t(".success")
       end
     else
-      Rails.logger.error "OmniAuth failed (#{auth.provider}): #{user.errors.full_messages.join(', ')}"
-      alert = if user.errors.of_kind?(:email_address, :taken)
-        t(".email_already_used")
-      else
-        t("Failed")
-      end
-      redirect_to new_session_path, alert: alert
+      redirect_to new_session_path, alert: t(".email_already_used")
     end
   end
 end
