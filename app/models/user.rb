@@ -16,11 +16,18 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }, allow_nil: true
 
   def self.from_omniauth(response)
-    find_or_create_by(uid: response[:uid], provider: response[:provider]) do |user|
-      user.name = response.dig(:info, :name)
-      user.email_address = response.dig(:info, :email)
-      user.password = SecureRandom.hex(16)
+    provider = response[:provider]
+    uid = response[:uid].to_s
+    email = response.dig(:info, :email).to_s.strip.downcase.presence
+    name = response.dig(:info, :name)
+    user = find_by(provider: provider, uid: uid)
+    return user if user
+
+    if email && (user = find_by(email_address: email))
+      user.update(provider: provider, uid: uid) if user.provider.blank?
+      return user
     end
+    create(provider: provider, uid: uid, name: name, email_address: email, password: SecureRandom.hex(16))
   end
 
   def self.ransackable_attributes(_auth = nil)
