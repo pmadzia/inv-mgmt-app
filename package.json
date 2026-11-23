@@ -16,14 +16,15 @@
     "@hotwired/turbo-rails": "^8.0.23",
     "@popperjs/core": "^2.11.8",
     "@stimulus-components/checkbox-select-all": "^6.1.0",
-    "bootstrap": "^5.3.8",
+    "bootstrap": "^5.3.9",
     "bootstrap-icons": "^1.13.2",
-    "esbuild": "^0.28.2"
+    "esbuild": "^0.28.2",
+    "sass": "^1.108.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.6.2",
+    "autoprefixer": "^10.7.0",
     "nodemon": "^3.1.14",
-    "postcss": "^8.5.32",
+    "postcss": "^8.5.33",
     "postcss-cli": "^12.0.0"
   }
 }
