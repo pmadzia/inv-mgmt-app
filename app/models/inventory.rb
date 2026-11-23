@@ -28,7 +28,7 @@ class Inventory < ApplicationRecord
   end
 
   def add_field(type:, name:, description: nil, show: false)
-      key = free_slot_for(type) or return false
+      key = find_free_slot_for(type) or return false
       assign_attributes("#{key}_state" => true, "#{key}_name" => name,
                         "#{key}_description" => description, "#{key}_show" => show)
       self.field_order += [ key ]
@@ -53,7 +53,7 @@ class Inventory < ApplicationRecord
   end
 
   def validate_field_names
-    active_fields.each do |field|
+    find_active_fields.each do |field|
       errors.add(:base, "Field #{field.key} needs a name") if field.name.blank?
     end
   end

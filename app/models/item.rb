@@ -5,6 +5,6 @@ class Item < ApplicationRecord
   validates :custom_id, presence: true, uniqueness: { scope: :inventory_id }
 
   def field_values
-    inventory.active_fields.map { |field| [ field, self[field.key] ] }
+    inventory.find_active_fields.map { |field| [ field, self[field.key] ] }
   end
 end

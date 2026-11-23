@@ -10,6 +10,7 @@ pl:
       sign_in: "Zaloguj się"
       sign_up: "Zarejestruj się"
       sign_out: "Wyloguj się"
+      admin_panel: "Panel administracyjny"
     preferences:
       change_language: "Zmień język"
   sessions:

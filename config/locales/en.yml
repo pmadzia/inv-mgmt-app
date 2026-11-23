@@ -10,6 +10,7 @@ en:
       sign_in: "Sign in"
       sign_up: "Sign up"
       sign_out: "Sign out"
+      admin_panel: "Admin Panel"
     preferences:
       change_language: "Change language"
   sessions:
