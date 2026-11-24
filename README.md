@@ -1,6 +1,6 @@
 # Inventory Management App
 A web application for managing inventory, built with Ruby on Rails.
-Link to app: [inventories](https://inv-mgmt-app.onrender.com)
+Link to app: [Inventories](https://inv-mgmt-app.onrender.com)
 
 ## Features
 - Create account and sign-in
